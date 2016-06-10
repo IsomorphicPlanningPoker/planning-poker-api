@@ -1,0 +1,29 @@
+{
+  "name": "planning-poker-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rm -rf dist",
+    "prebuild": "npm run clean",
+    "build": "tsc",
+    "start": "npm run build && node dist/index.js",
+    "test": "jasmine JASMINE_CONFIG_PATH=jasmine.json"
+  },
+  "author": "Ieltxu Algañarás <ieltxu.alganaras@gmail.com> (http://ieltxualganaras.com.ar/)",
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "^3.4.0",
+    "body-parser": "^1.15.1",
+    "cors": "^2.7.1",
+    "errorhandler": "^1.4.3",
+    "express": "^4.13.4",
+    "lodash": "^4.13.1",
+    "method-override": "^2.3.6",
+    "mongoose": "^4.4.20",
+    "socket.io": "^1.4.6"
+  },
+  "devDependencies": {
+    "jasmine": "^2.4.1"
+  }
+}

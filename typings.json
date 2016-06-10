@@ -1,0 +1,19 @@
+{
+  "globalDependencies": {
+    "bluebird": "registry:dt/bluebird#2.0.0+20160319051630",
+    "body-parser": "registry:dt/body-parser#0.0.0+20160317120654",
+    "cors": "registry:dt/cors#0.0.0+20160317120654",
+    "deep-freeze": "registry:dt/deep-freeze#0.0.0+20160317120654",
+    "errorhandler": "registry:dt/errorhandler#0.0.0+20160316155526",
+    "express": "registry:dt/express#4.0.0+20160317120654",
+    "express-serve-static-core": "registry:dt/express-serve-static-core#0.0.0+20160602151406",
+    "jasmine": "registry:dt/jasmine#2.2.0+20160505161446",
+    "lodash": "registry:dt/lodash#3.10.0+20160330154726",
+    "method-override": "registry:dt/method-override#0.0.0+20160317120654",
+    "mime": "registry:dt/mime#0.0.0+20160316155526",
+    "mongoose": "registry:dt/mongoose#3.8.5+20160605151347",
+    "node": "registry:dt/node#6.0.0+20160608110640",
+    "serve-static": "registry:dt/serve-static#0.0.0+20160606155157",
+    "socket.io": "registry:dt/socket.io#1.4.4+20160317120654"
+  }
+}
