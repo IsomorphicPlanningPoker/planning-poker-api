@@ -7,8 +7,9 @@
     "clean": "rm -rf dist",
     "prebuild": "npm run clean",
     "build": "tsc",
-    "start": "npm run build && node dist/index.js",
-    "test": "jasmine JASMINE_CONFIG_PATH=jasmine.json"
+    "start": "NODE_ENV=dev npm run build && node dist/index.js",
+    "test-debug": "NODE_ENV=test jasmine-node-debug JASMINE_CONFIG_PATH=jasmine.json",
+    "test": "NODE_ENV=test jasmine JASMINE_CONFIG_PATH=jasmine.json"
   },
   "author": "Ieltxu Algañarás <ieltxu.alganaras@gmail.com> (http://ieltxualganaras.com.ar/)",
   "license": "MIT",
