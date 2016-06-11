@@ -1,8 +1,8 @@
-import {Vote} from './../shared/vote/vote.interface';
-import {Story} from './../shared/story/story.interface';
-import {connection} from './../db';
+import { connection } from './../db';
+import { Vote } from './../shared/vote/vote.interface';
+import { Story } from './../shared/story/story.interface';
 import { Game } from '../shared/game/game.interface';
-import { GameService } from './game.service';
+import { GameAPIService } from './game.api.service';
 
 describe('GameAPIService:', () => {
 
@@ -22,7 +22,7 @@ describe('GameAPIService:', () => {
       name: 'Test new game name',
       owner: 'Test new game owner name'
     };
-    GameService.createGame(game).then((newGame) => {
+    GameAPIService.createGame(game).then((newGame) => {
       expect(newGame.name).toEqual('Test new game name');
       done();
     });
@@ -35,8 +35,8 @@ describe('GameAPIService:', () => {
       owner: 'Test new game owner name'
     };
 
-    GameService.createGame(game).then((newGame) => {
-      GameService.getGame(newGame._id).then((foundGame) => {
+    GameAPIService.createGame(game).then((newGame) => {
+      GameAPIService.getGame(newGame._id).then((foundGame) => {
         expect(foundGame.name).toEqual(game.name);
         done();
       });
@@ -54,8 +54,8 @@ describe('GameAPIService:', () => {
       name: 'Test new story name'
     };
 
-    GameService.createGame(game).then((newGame) => {
-      return GameService.addStory(newGame._id, story).then((createdGame) => {
+    GameAPIService.createGame(game).then((newGame) => {
+      return GameAPIService.addStory(newGame._id, story).then((createdGame) => {
         expect(createdGame.stories[0].name).toEqual(story.name);
         done();
       })
@@ -78,11 +78,11 @@ describe('GameAPIService:', () => {
     };
 
 
-    GameService.createGame(game).then((newGame) => {
-      GameService.addStory(newGame._id, story).then((game) => {
+    GameAPIService.createGame(game).then((newGame) => {
+      GameAPIService.addStory(newGame._id, story).then((game) => {
         let editedStory = Object.assign({}, game.stories[0], {name: 'edited story name'});
-        GameService.editStory(game._id, editedStory).then(() => {
-          return GameService.getGame(newGame._id);
+        GameAPIService.editStory(game._id, editedStory).then(() => {
+          return GameAPIService.getGame(newGame._id);
         })
         .then((gameWithStoryAdded) => {
           expect(gameWithStoryAdded.stories[0].name).toEqual(editedStory.name);
@@ -109,11 +109,8 @@ describe('GameAPIService:', () => {
       vote: 1
     };
 
-    GameService.createGame(game).then((newGame) => {
-        GameService.voteStory(newGame._id, newGame.stories[0]._id, vote)
-        .then(() => {
-          return GameService.getGame(newGame._id);
-        })
+    GameAPIService.createGame(game).then((newGame) => {
+      GameAPIService.voteStory(newGame._id, newGame.stories[0]._id, vote)
         .then((gameWithStoryVoted) => {
           console.log('***chabon***', gameWithStoryVoted);
           expect(gameWithStoryVoted.stories[0].votes[0].vote).toEqual(1);
@@ -140,14 +137,12 @@ describe('GameAPIService:', () => {
       stories: [ story ]
     };
 
-    GameService.createGame(game).then((newGame) => {
+    GameAPIService.createGame(game).then((newGame) => {
       let oldStory = newGame.stories[0];
       let oldVote = oldStory.votes[0];
       let changedVote = Object.assign({}, oldVote , { vote: 2 } );
-      GameService.voteStory(newGame._id, oldStory._id, changedVote)
-        .then(() => {
-          return GameService.getGame(newGame._id);
-        })
+
+      GameAPIService.voteStory(newGame._id, oldStory._id, changedVote)
         .then((gameWithStoryVoted) => {
           expect(gameWithStoryVoted.stories[0].votes[0].vote).toEqual(2);
           done();

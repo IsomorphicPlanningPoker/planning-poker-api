@@ -24,9 +24,8 @@ function initApp() {
 
   app.use('/api/games', gameRouter)
 
-
   SocketIOService.getInstance(app)
-    .registerListener(SocketIOService.MAIN_ROOM_NAME, 'connection', () => {
+    .io.on('connection', () => {
       console.log('user connected');
     });
 }
