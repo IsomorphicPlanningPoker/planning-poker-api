@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "clean": "rm -rf dist",
-    "prebuild": "npm run clean",
+    "preinstall": "rm -rf dist && rm -rf typings",
+    "postinstall": "typings install",
+    "prebuild": "npm install",
     "build": "tsc",
     "start": "NODE_ENV=dev npm run build && node dist/index.js",
     "test-debug": "NODE_ENV=test jasmine-node-debug JASMINE_CONFIG_PATH=jasmine.json",
