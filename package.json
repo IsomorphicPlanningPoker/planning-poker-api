@@ -4,11 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "preinstall": "rm -rf dist && rm -rf typings",
-    "postinstall": "typings install",
-    "prebuild": "npm install",
-    "build": "tsc",
-    "start": "NODE_ENV=dev npm run build && node dist/index.js",
+    "build": "./node_modules/gulp/bin/gulp.js build --require ts-node/register",
+    "start": "NODE_ENV=dev nodemon --watch 'src/**/*.ts' --ignore 'src/**/*.spec.ts' --exec 'ts-node' src/index.ts",
     "test-debug": "NODE_ENV=test jasmine-node-debug JASMINE_CONFIG_PATH=jasmine.json",
     "test": "NODE_ENV=test jasmine JASMINE_CONFIG_PATH=jasmine.json"
   },
@@ -26,6 +23,13 @@
     "socket.io": "^1.4.6"
   },
   "devDependencies": {
-    "jasmine": "^2.4.1"
+    "del": "^2.2.1",
+    "gulp": "gulpjs/gulp#4ed9a4a3275559c73a396eff7e1fde3824951ebb",
+    "gulp-install": "^0.6.0",
+    "gulp-typescript": "^2.13.6",
+    "gulp-typings": "^2.0.0",
+    "jasmine": "^2.4.1",
+    "ts-node": "^0.9.2",
+    "typescript": "^1.9.0-dev.20160620-1.0"
   }
 }
