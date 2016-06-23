@@ -11,9 +11,11 @@
     "lodash": "registry:dt/lodash#3.10.0+20160330154726",
     "method-override": "registry:dt/method-override#0.0.0+20160317120654",
     "mime": "registry:dt/mime#0.0.0+20160316155526",
-    "mongoose": "registry:dt/mongoose#3.8.5+20160605151347",
     "node": "registry:dt/node#6.0.0+20160608110640",
     "serve-static": "registry:dt/serve-static#0.0.0+20160606155157",
     "socket.io": "registry:dt/socket.io#1.4.4+20160317120654"
+  },
+  "dependencies": {
+    "mongoose": "registry:npm/mongoose#4.3.5+20160610145311"
   }
 }
